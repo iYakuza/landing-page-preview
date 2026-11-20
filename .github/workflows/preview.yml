@@ -1,5 +1,5 @@
 name: Build isolated GitHub-only CMS preview
-# Rebuild to pick up archive listing resilience, editor controls, and media resolver fixes.
+# Rebuild to pick up explicit block/media/column actions and archive listing resilience.
 # Also rebuild when GitHub-only CMS logic or editor-control/media compatibility changes in the recovery source.
 
 on:
@@ -42,6 +42,7 @@ jobs:
         shell: bash
         run: |
           node --check source/human-archive/archive.js
+          node --check source/editor-ui/block-editor.js
           node --check source/transmissions/posts.js
 
       - name: Assemble isolated preview site and seed its data repository
