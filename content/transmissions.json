@@ -182,7 +182,8 @@
           "src": "media/transmissions/T-0006/featured.jpg",
           "url": "media/transmissions/T-0006/featured.jpg",
           "source_url": "/landing-page/posts/imported/wfh/media/featured.jpg",
-          "status": "available"
+          "status": "available",
+          "storage": "github-public"
         }
       ],
       "media_width": 100,
