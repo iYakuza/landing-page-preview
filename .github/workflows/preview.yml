@@ -128,6 +128,20 @@ jobs:
               content = content.replace(canonical_pattern, "https://iyakuza.github.io/landing-page-preview")
               content = path_pattern.sub(r"\1/landing-page-preview", content)
               content = css_pattern.sub(r"\1/landing-page-preview", content)
+
+              # The former Posts routes were renamed in the site architecture.
+              # Keep old internal links working by mapping them to the new destinations.
+              # The community route must be handled before the general Posts route.
+              content = re.sub(
+                  r"(?P<prefix>/landing-page-preview)?/posts/community(?=[/?#\"'\\s]|$)",
+                  lambda match: (match.group("prefix") or "") + "/signals",
+                  content,
+              )
+              content = re.sub(
+                  r"(?P<prefix>/landing-page-preview)?/posts(?=[/?#\"'\\s]|$)",
+                  lambda match: (match.group("prefix") or "") + "/transmissions",
+                  content,
+              )
               if item.suffix.lower() == ".html":
                   robots = re.compile(r"""<meta\s+name=["']robots["'][^>]*>""", re.IGNORECASE)
                   if robots.search(content):
