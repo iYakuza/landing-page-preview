@@ -6,6 +6,7 @@ on:
     paths:
       - 'content/**'
       - 'media/**'
+      - '.github/workflows/preview.yml'
   workflow_dispatch:
 
 permissions:
