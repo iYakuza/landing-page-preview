@@ -110,8 +110,8 @@ jobs:
 
           # GitHub Pages project sites are hosted below /landing-page-preview/.
           # Rewrite only quoted site-root paths, not GitHub repository links.
-          path_pattern = re.compile(r"([\\\"'\x60])/landing-page(?=/|[?#\\\"'\x60\\s])")
-          css_pattern = re.compile(r"(url\\(\\s*)/landing-page(?=/|[?#)])")
+          path_pattern = re.compile(r"""(["'])/landing-page(?=/|[?#"'\s])""")
+          css_pattern = re.compile(r"(url\(\s*)/landing-page(?=/|[?#)])")
           canonical_pattern = "https://iyakuza.github.io/landing-page"
           text_suffixes = {
               ".html", ".js", ".css", ".json", ".xml", ".txt", ".svg",
@@ -125,16 +125,16 @@ jobs:
               except (UnicodeDecodeError, OSError):
                   continue
               content = content.replace(canonical_pattern, "https://iyakuza.github.io/landing-page-preview")
-              content = path_pattern.sub(r"\\1/landing-page-preview", content)
-              content = css_pattern.sub(r"\\1/landing-page-preview", content)
+              content = path_pattern.sub(r"\1/landing-page-preview", content)
+              content = css_pattern.sub(r"\1/landing-page-preview", content)
               if item.suffix.lower() == ".html":
-                  robots = re.compile(r"<meta\\s+name=[\\\"']robots[\\\"'][^>]*>", re.IGNORECASE)
+                  robots = re.compile(r"""<meta\s+name=["']robots["'][^>]*>""", re.IGNORECASE)
                   if robots.search(content):
                       content = robots.sub('<meta name="robots" content="noindex,nofollow">', content)
                   else:
                       content = re.sub(
-                          r"(<head\\b[^>]*>)",
-                          r'\\1\\n  <meta name="robots" content="noindex,nofollow">',
+                          r"(<head\b[^>]*>)",
+                          r'\1\n  <meta name="robots" content="noindex,nofollow">',
                           content,
                           count=1,
                           flags=re.IGNORECASE,
@@ -142,7 +142,7 @@ jobs:
               item.write_text(content, encoding="utf-8")
 
           # Keep the preview out of search engine indexes.
-          (site / "robots.txt").write_text("User-agent: *\\nDisallow: /\\n", encoding="utf-8")
+          (site / "robots.txt").write_text("User-agent: *\nDisallow: /\n", encoding="utf-8")
           (site / ".nojekyll").touch()
 
           # Persist the first recovered content/media snapshot in preview-data.
