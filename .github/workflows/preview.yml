@@ -37,6 +37,12 @@ jobs:
         run: |
           git clone --depth 1 --branch recovery/supabase-content-export-20261119 https://github.com/iYakuza/landing-page.git source
 
+      - name: Validate JavaScript syntax
+        shell: bash
+        run: |
+          node --check source/human-archive/archive.js
+          node --check source/transmissions/posts.js
+
       - name: Assemble isolated preview site and seed its data repository
         shell: bash
         run: |
