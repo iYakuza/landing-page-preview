@@ -159,7 +159,14 @@ def download_target(target: str, candidates: list[str]) -> tuple[bool, int]:
                 temporary.replace(destination)
                 print(f"RECOVERED {target} ({len(data)} bytes; {content_type or 'unknown MIME'})")
                 return True, len(data)
-            except Exception as error:  # network and source errors are retried below
+            except urllib.error.HTTPError as error:
+                last_error = str(error)
+                # A 402/403/404 is a definitive source failure, not a transient
+                # network issue. Do not spend time retrying it.
+                if error.code not in (408, 425, 429, 500, 502, 503, 504) or attempt == 3:
+                    break
+                time.sleep(attempt * 2)
+            except Exception as error:  # transient network/source errors
                 last_error = str(error)
                 if attempt < 3:
                     time.sleep(attempt * 2)
