@@ -373,7 +373,9 @@ for structure in archive.get("editor_structures") or []:
                 key = url_key(media.get("url") or media.get("source_url") or "")
                 target = source_to_target.get(key)
                 if target and target_file(target).is_file():
-                    # Keep the legacy URL as a manifest key; localMediaUrl uses path.
+                    # The editor should use the local preview/production path;
+                    # source_url remains untouched as historical provenance.
+                    media["url"] = local_url(target)
                     media["path"] = safe_target(target)
                     media["storage"] = "github-public"
 
