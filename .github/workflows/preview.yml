@@ -1,5 +1,5 @@
 name: Build isolated GitHub-only CMS preview
-# Rebuild to pick up refreshed archive/transmissions media resolver scripts.
+# Rebuild to pick up archive listing resilience, editor controls, and media resolver fixes.
 # Also rebuild when GitHub-only CMS logic or editor-control/media compatibility changes in the recovery source.
 
 on:
