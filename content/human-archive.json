@@ -5708,7 +5708,7 @@
         "media/human-archive/HA-3004/f19cc669-71a4-47ff-ad8c-4f00a8303fb8-green-dream_-the-god-beneath-the-noise.png"
       ],
       "missing_external_media_paths": [],
-      "newly_downloaded_files": 3
+      "newly_downloaded_files": 0
     },
     "verified_local_files": 111
   },
@@ -12947,7 +12947,7 @@
         "audio": [
           {
             "id": "recovered-wp-1669",
-            "url": "https://ioguymqdeuuursizifnn.supabase.co/storage/v1/object/public/human-archive-media/posts/1666/1669-cenusa-de-nimic.mp3",
+            "url": "/landing-page/media/human-archive/HA-1666/1669-cenusa-de-nimic.mp3",
             "name": "Cenușă de nimic",
             "path": "media/human-archive/HA-1666/1669-cenusa-de-nimic.mp3",
             "storage": "github-public",
@@ -12957,7 +12957,7 @@
         "image": [
           {
             "id": "recovered-wp-1668",
-            "url": "https://ioguymqdeuuursizifnn.supabase.co/storage/v1/object/public/human-archive-media/posts/1666/1668-cenusa-de-nimic.jpeg",
+            "url": "/landing-page/media/human-archive/HA-1666/1668-cenusa-de-nimic.jpeg",
             "name": "Cenușă de nimic",
             "path": "media/human-archive/HA-1666/1668-cenusa-de-nimic.jpeg",
             "storage": "github-public",
