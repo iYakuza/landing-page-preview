@@ -1,5 +1,5 @@
 name: Build isolated GitHub-only CMS preview
-# Rebuild to pick up explicit block/media/column actions and archive listing resilience.
+# Rebuild after correcting block-editor media validation syntax; verify full editor assets.
 # Also rebuild when GitHub-only CMS logic or editor-control/media compatibility changes in the recovery source.
 
 on:
