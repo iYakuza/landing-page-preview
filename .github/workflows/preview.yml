@@ -1,0 +1,188 @@
+name: Build isolated GitHub-only CMS preview
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content/**'
+      - 'media/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: landing-page-preview
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: read
+    steps:
+      - name: Check out preview repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: main
+          path: preview-data
+          fetch-depth: 0
+
+      - name: Check out public recovery source
+        shell: bash
+        run: |
+          git clone --depth 1 --branch recovery/supabase-content-export-20261119 https://github.com/iYakuza/landing-page.git source
+
+      - name: Assemble isolated preview site and seed its data repository
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          import shutil
+          import subprocess
+
+          source = Path("source")
+          preview_repo = Path("preview-data")
+          site = Path("_site")
+
+          required = (
+              source / "cms/github-client.js",
+              source / "content/human-archive.json",
+              source / "content/transmissions.json",
+          )
+          missing = [str(path) for path in required if not path.is_file()]
+          if missing:
+              raise SystemExit("Recovery source is incomplete: " + ", ".join(missing))
+
+          # Seed canonical public JSON and recovered media without overwriting
+          # anything already created or edited in the isolated preview repository.
+          for folder_name in ("content", "media"):
+              source_dir = source / folder_name
+              target_dir = preview_repo / folder_name
+              if not source_dir.is_dir():
+                  continue
+              for item in source_dir.rglob("*"):
+                  if not item.is_file():
+                      continue
+                  destination = target_dir / item.relative_to(source_dir)
+                  if not destination.exists():
+                      destination.parent.mkdir(parents=True, exist_ok=True)
+                      shutil.copy2(item, destination)
+
+          # Create a static copy of the recovery branch for the preview website.
+          shutil.copytree(
+              source,
+              site,
+              dirs_exist_ok=True,
+              ignore=shutil.ignore_patterns(".git", ".github", "node_modules", ".DS_Store"),
+          )
+
+          # The preview repository is the canonical data source for preview traffic.
+          for folder_name in ("content", "media"):
+              target_dir = preview_repo / folder_name
+              if target_dir.is_dir():
+                  shutil.copytree(target_dir, site / folder_name, dirs_exist_ok=True)
+
+          # Route CMS writes to the preview public repository and preview-only
+          # private branch. Production repositories/branches are never targets.
+          client_path = site / "cms/github-client.js"
+          client = client_path.read_text(encoding="utf-8")
+          substitutions = (
+              ("publicRepo: 'landing-page'", "publicRepo: 'landing-page-preview'"),
+              ("privateBranch: 'main'", "privateBranch: 'preview'"),
+          )
+          for old, new in substitutions:
+              if client.count(old) != 1:
+                  raise SystemExit("Expected exactly one CMS configuration entry: " + old)
+              client = client.replace(old, new, 1)
+          client_path.write_text(client, encoding="utf-8")
+
+          # Make the owner-facing instructions match this isolated environment.
+          cms_html = site / "cms/index.html"
+          cms_text = cms_html.read_text(encoding="utf-8")
+          cms_text = cms_text.replace(
+              "<code>iYakuza/landing-page</code>",
+              "<code>iYakuza/landing-page-preview</code>",
+          )
+          cms_html.write_text(cms_text, encoding="utf-8")
+
+          # GitHub Pages project sites are hosted below /landing-page-preview/.
+          # Rewrite only quoted site-root paths, not GitHub repository links.
+          path_pattern = re.compile(r"([\\\"'\x60])/landing-page(?=/|[?#\\\"'\x60\\s])")
+          css_pattern = re.compile(r"(url\\(\\s*)/landing-page(?=/|[?#)])")
+          canonical_pattern = "https://iyakuza.github.io/landing-page"
+          text_suffixes = {
+              ".html", ".js", ".css", ".json", ".xml", ".txt", ".svg",
+              ".webmanifest", ".md", ".yaml", ".yml",
+          }
+          for item in site.rglob("*"):
+              if not item.is_file() or item.suffix.lower() not in text_suffixes:
+                  continue
+              try:
+                  content = item.read_text(encoding="utf-8")
+              except (UnicodeDecodeError, OSError):
+                  continue
+              content = content.replace(canonical_pattern, "https://iyakuza.github.io/landing-page-preview")
+              content = path_pattern.sub(r"\\1/landing-page-preview", content)
+              content = css_pattern.sub(r"\\1/landing-page-preview", content)
+              if item.suffix.lower() == ".html":
+                  robots = re.compile(r"<meta\\s+name=[\\\"']robots[\\\"'][^>]*>", re.IGNORECASE)
+                  if robots.search(content):
+                      content = robots.sub('<meta name="robots" content="noindex,nofollow">', content)
+                  else:
+                      content = re.sub(
+                          r"(<head\\b[^>]*>)",
+                          r'\\1\\n  <meta name="robots" content="noindex,nofollow">',
+                          content,
+                          count=1,
+                          flags=re.IGNORECASE,
+                      )
+              item.write_text(content, encoding="utf-8")
+
+          # Keep the preview out of search engine indexes.
+          (site / "robots.txt").write_text("User-agent: *\\nDisallow: /\\n", encoding="utf-8")
+          (site / ".nojekyll").touch()
+
+          # Persist the first recovered content/media snapshot in preview-data.
+          subprocess.run(["git", "config", "user.name", "github-actions[bot]"], cwd=preview_repo, check=True)
+          subprocess.run(
+              ["git", "config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com"],
+              cwd=preview_repo,
+              check=True,
+          )
+          subprocess.run(["git", "add", "content", "media"], cwd=preview_repo, check=True)
+          changed = subprocess.run(
+              ["git", "diff", "--cached", "--quiet"], cwd=preview_repo, check=False
+          ).returncode != 0
+          if changed:
+              subprocess.run(
+                  ["git", "commit", "-m", "Seed isolated preview content and media from recovery source"],
+                  cwd=preview_repo,
+                  check=True,
+              )
+              subprocess.run(["git", "push", "origin", "HEAD:main"], cwd=preview_repo, check=True)
+          PY
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload preview website
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy isolated preview
+        id: deployment
+        uses: actions/deploy-pages@v4
