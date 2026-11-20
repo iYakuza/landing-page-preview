@@ -77,7 +77,7 @@ jobs:
           # Recover legacy Supabase/WordPress media into the isolated GitHub preview.
           # This is idempotent: existing files are verified and never overwritten.
           media_env = dict(os.environ)
-          media_env["VHA_PREVIEW_BASE_PATH"] = "/landing-page-preview"
+          media_env["VHA_PREVIEW_BASE_PATH"] = "/landing-page"
           subprocess.run(
               ["python3", "scripts/recover-preview-media.py"],
               cwd=preview_repo,
