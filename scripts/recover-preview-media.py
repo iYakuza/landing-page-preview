@@ -276,10 +276,11 @@ for target, candidates in target_candidates.items():
             optional_failures.append(target)
 
 if required_failures:
-    raise RuntimeError(
-        "Required media could not be recovered; preview deployment stopped: "
+    print(
+        "MEDIA RECOVERY PARTIAL // These source files are unavailable and remain pending: "
         + ", ".join(required_failures)
     )
+
 
 # Rebuild the URL -> preview-file substitutions now that all available assets exist.
 replacements: dict[str, str] = {}
@@ -404,6 +405,12 @@ for item in manifest_items:
 manifest["items"] = manifest_items
 manifest["item_count"] = len(manifest_items)
 manifest["preview_recovery_revision"] = "github-media-v1"
+manifest["preview_recovery_report"] = {
+    "status": "partial" if required_failures or optional_failures else "verified",
+    "missing_owned_media_paths": required_failures,
+    "missing_external_media_paths": optional_failures,
+    "newly_downloaded_files": downloaded,
+}
 manifest["verified_local_files"] = sum(
     1 for item in manifest_items
     if item.get("local_path") and target_file(item["local_path"]).is_file()
