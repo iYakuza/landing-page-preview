@@ -1,4 +1,5 @@
 name: Build isolated GitHub-only CMS preview
+# Rebuild to pick up refreshed archive/transmissions media resolver scripts.
 
 on:
   push:
