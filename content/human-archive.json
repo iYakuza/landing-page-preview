@@ -14060,60 +14060,63 @@
       "public_record_id": "HA-3007"
     },
     {
-      "blocks": [
-        {
-          "id": "block-001",
-          "html": "<div class=\"ha-columns\"><section><figure data-ha-block-name=\"Audio\"><audio src=\"https://oeyxsqocldlovhsmzcjw.supabase.co/storage/v1/object/public/vha-post-media/3db54039-9208-4ec6-a741-94638e2ace16/63443fbf-06c5-47e4-986b-2a23bf6c1471-purtata-corporatri-tilor---mp3.mp3\" controls=\"\" preload=\"metadata\"></audio><figcaption>Purtata corporatriștilor - mp3.mp3</figcaption></figure><p data-ha-block-name=\"Lyrics\">2x Io-s în deal și jobu-n șesu<br>La la la la la la la la<br>2x Tot aplic da' nu-s alesu'<br>La la la la la la la la</p><p>2x La interviu, gândești că-mi știe<br>La la la la la la la la<br>2x Cum lucrat io pă moșie<br>La la la la la la la la</p><p>2x Mi-i sorocu-nfundatu'<br>La la la la la la la la<br>2x Și am mațu-nnodatu'<br>La la la la la la la la</p><p>2x Badeo, spiculeţ de grâu<br>La la la la la la la la<br>2x Zi-mi și mie ce să zâu<br>La la la la la la la la</p><p>2x Că de-oi semna io cu tine<br>La la la la la la la la<br>2x Nu-mi trebuie' altu-n lume<br>La la la la la la la la</p><p>2x Numai tu, bădiţo, tu<br>La la la la la la la la<br>2x Altul bade, nu şi nu'.<br>La la la la la la la la</p></section><section><p data-ha-block-name=\"SUNO // PROMPT STYLE\">Replica of original uploaded audio file with raw, unaccompanied acapella vocal-only, and reference tempo carried by synchronized human footsteps; preserve the reference audio’s tempo, rhythm, structure, repeated phrasing and female vocal arrangement</p><figure data-ha-block-name=\"Video\"><video src=\"https://oeyxsqocldlovhsmzcjw.supabase.co/storage/v1/object/public/vha-post-media/3db54039-9208-4ec6-a741-94638e2ace16/600a1839-ffe6-4001-8dbd-3ca1ee497218-purtata-corporatri-tilor---video.mp4\" controls=\"\" preload=\"metadata\" playsinline=\"\"></video><figcaption>Purtata corporatriștilor - video.mp4</figcaption></figure></section><section><figure data-ha-block-name=\"Image\"><img src=\"https://oeyxsqocldlovhsmzcjw.supabase.co/storage/v1/object/public/vha-post-media/3db54039-9208-4ec6-a741-94638e2ace16/33959e46-c667-4d95-b06b-e4971882bc33-purtata-corporatri-tilor---lyrics.png\" alt=\"Purtata corporatriștilor - lyrics.png\" loading=\"lazy\" style=\"max-width: 100%; height: auto;\"><figcaption>Purtata corporatriștilor - lyrics.png</figcaption></figure></section></div>",
-          "type": "columns"
-        }
-      ],
       "record_id": 3008,
-      "updated_at": "2026-11-18T21:53:55.586827+00:00",
-      "output_text": "",
+      "transmission_body": "<div class=\"ha-columns\"><section><p data-ha-block-name=\"Lyrics\">2x Io-s în deal și jobu-n șesu<br>La la la la la la la la<br>2x Tot aplic da' nu-s alesu'<br>La la la la la la la la</p><p>2x La interviu, gândești că-mi știe<br>La la la la la la la la<br>2x Cum lucrat io pă moșie<br>La la la la la la la la</p><p>2x Mi-i sorocu-nfundatu'<br>La la la la la la la la<br>2x Și am mațu-nnodatu'<br>La la la la la la la la</p><p>2x Badeo, spiculeţ de grâu<br>La la la la la la la la<br>2x Zi-mi și mie ce să zâu<br>La la la la la la la la</p><p>2x Că de-oi semna io cu tine<br>La la la la la la la la<br>2x Nu-mi trebuie' altu-n lume<br>La la la la la la la la</p><p>2x Numai tu, bădiţo, tu<br>La la la la la la la la<br>2x Altul bade, nu şi nu'.<br>La la la la la la la la</p></section><section><p data-ha-block-name=\"SUNO // PROMPT STYLE\">Replica of original uploaded audio file with raw, unaccompanied acapella vocal-only, and reference tempo carried by synchronized human footsteps; preserve the reference audio’s tempo, rhythm, structure, repeated phrasing and female vocal arrangement</p><figure data-ha-block-name=\"Video\"><video src=\"https://oeyxsqocldlovhsmzcjw.supabase.co/storage/v1/object/public/vha-post-media/3db54039-9208-4ec6-a741-94638e2ace16/600a1839-ffe6-4001-8dbd-3ca1ee497218-purtata-corporatri-tilor---video.mp4\" controls=\"\" preload=\"none\" playsinline=\"\"></video><figcaption>Purtata corporatriștilor - video.mp4</figcaption></figure></section><section><p><br></p><div class=\"ha-audio-block\"><figure><audio src=\"media/transmissions/T-0001/46e3f478-0e5a-4c6d-9050-bd33f58d9936-Bing-Bong-I-Am-a-Spoon.mp3\" controls=\"\" preload=\"none\"></audio><figcaption>Bing Bong, I Am a Spoon.mp3</figcaption></figure></div></section></div>",
+      "prompt_style": "",
       "lyrics_style": "",
+      "output_text": "",
       "output_media": {
-        "audio": [
-          {
-            "id": "recovered-transmission-2595777f-f155-4fe7-8817-361235c26aca-3",
-            "url": "https://oeyxsqocldlovhsmzcjw.supabase.co/storage/v1/object/public/vha-post-media/3db54039-9208-4ec6-a741-94638e2ace16/63443fbf-06c5-47e4-986b-2a23bf6c1471-purtata-corporatri-tilor---mp3.mp3",
-            "name": "Purtata corporatriștilor - mp3.mp3",
-            "path": "3db54039-9208-4ec6-a741-94638e2ace16/63443fbf-06c5-47e4-986b-2a23bf6c1471-purtata-corporatri-tilor---mp3.mp3",
-            "storage": "vha-post-media",
-            "mime_type": "audio/unknown"
-          }
-        ],
         "image": [
           {
             "id": "recovered-transmission-2595777f-f155-4fe7-8817-361235c26aca-0",
-            "url": "https://oeyxsqocldlovhsmzcjw.supabase.co/storage/v1/object/public/vha-post-media/3db54039-9208-4ec6-a741-94638e2ace16/33959e46-c667-4d95-b06b-e4971882bc33-purtata-corporatri-tilor---lyrics.png",
             "name": "Purtata corporatriștilor - lyrics.png",
+            "url": "https://oeyxsqocldlovhsmzcjw.supabase.co/storage/v1/object/public/vha-post-media/3db54039-9208-4ec6-a741-94638e2ace16/33959e46-c667-4d95-b06b-e4971882bc33-purtata-corporatri-tilor---lyrics.png",
             "path": "3db54039-9208-4ec6-a741-94638e2ace16/33959e46-c667-4d95-b06b-e4971882bc33-purtata-corporatri-tilor---lyrics.png",
-            "storage": "vha-post-media",
-            "mime_type": "image/unknown"
+            "type": "file",
+            "mime_type": "image/unknown",
+            "storage": "vha-post-media"
           },
           {
             "id": "recovered-transmission-2595777f-f155-4fe7-8817-361235c26aca-2",
-            "url": "https://oeyxsqocldlovhsmzcjw.supabase.co/storage/v1/object/public/vha-post-media/3db54039-9208-4ec6-a741-94638e2ace16/867dd09a-e4ad-4076-976d-4a37f069cf91-purtata-corporatri-tilor---cover.jpeg",
             "name": "Purtata corporatriștilor - cover.jpeg",
+            "url": "https://oeyxsqocldlovhsmzcjw.supabase.co/storage/v1/object/public/vha-post-media/3db54039-9208-4ec6-a741-94638e2ace16/867dd09a-e4ad-4076-976d-4a37f069cf91-purtata-corporatri-tilor---cover.jpeg",
             "path": "3db54039-9208-4ec6-a741-94638e2ace16/867dd09a-e4ad-4076-976d-4a37f069cf91-purtata-corporatri-tilor---cover.jpeg",
-            "storage": "vha-post-media",
-            "mime_type": "image/unknown"
+            "type": "file",
+            "mime_type": "image/unknown",
+            "storage": "vha-post-media"
+          }
+        ],
+        "audio": [
+          {
+            "id": "recovered-transmission-2595777f-f155-4fe7-8817-361235c26aca-3",
+            "name": "Purtata corporatriștilor - mp3.mp3",
+            "url": "https://oeyxsqocldlovhsmzcjw.supabase.co/storage/v1/object/public/vha-post-media/3db54039-9208-4ec6-a741-94638e2ace16/63443fbf-06c5-47e4-986b-2a23bf6c1471-purtata-corporatri-tilor---mp3.mp3",
+            "path": "3db54039-9208-4ec6-a741-94638e2ace16/63443fbf-06c5-47e4-986b-2a23bf6c1471-purtata-corporatri-tilor---mp3.mp3",
+            "type": "file",
+            "mime_type": "audio/unknown",
+            "storage": "vha-post-media"
           }
         ],
         "video": [
           {
             "id": "recovered-transmission-2595777f-f155-4fe7-8817-361235c26aca-1",
-            "url": "https://oeyxsqocldlovhsmzcjw.supabase.co/storage/v1/object/public/vha-post-media/3db54039-9208-4ec6-a741-94638e2ace16/600a1839-ffe6-4001-8dbd-3ca1ee497218-purtata-corporatri-tilor---video.mp4",
             "name": "Purtata corporatriștilor - video.mp4",
+            "url": "https://oeyxsqocldlovhsmzcjw.supabase.co/storage/v1/object/public/vha-post-media/3db54039-9208-4ec6-a741-94638e2ace16/600a1839-ffe6-4001-8dbd-3ca1ee497218-purtata-corporatri-tilor---video.mp4",
             "path": "3db54039-9208-4ec6-a741-94638e2ace16/600a1839-ffe6-4001-8dbd-3ca1ee497218-purtata-corporatri-tilor---video.mp4",
-            "storage": "vha-post-media",
-            "mime_type": "video/unknown"
+            "type": "file",
+            "mime_type": "video/unknown",
+            "storage": "vha-post-media"
           }
         ]
       },
-      "prompt_style": "",
-      "transmission_body": "<div class=\"ha-columns\"><section><figure data-ha-block-name=\"Audio\"><audio src=\"https://oeyxsqocldlovhsmzcjw.supabase.co/storage/v1/object/public/vha-post-media/3db54039-9208-4ec6-a741-94638e2ace16/63443fbf-06c5-47e4-986b-2a23bf6c1471-purtata-corporatri-tilor---mp3.mp3\" controls=\"\" preload=\"metadata\"></audio><figcaption>Purtata corporatriștilor - mp3.mp3</figcaption></figure><p data-ha-block-name=\"Lyrics\">2x Io-s în deal și jobu-n șesu<br>La la la la la la la la<br>2x Tot aplic da' nu-s alesu'<br>La la la la la la la la</p><p>2x La interviu, gândești că-mi știe<br>La la la la la la la la<br>2x Cum lucrat io pă moșie<br>La la la la la la la la</p><p>2x Mi-i sorocu-nfundatu'<br>La la la la la la la la<br>2x Și am mațu-nnodatu'<br>La la la la la la la la</p><p>2x Badeo, spiculeţ de grâu<br>La la la la la la la la<br>2x Zi-mi și mie ce să zâu<br>La la la la la la la la</p><p>2x Că de-oi semna io cu tine<br>La la la la la la la la<br>2x Nu-mi trebuie' altu-n lume<br>La la la la la la la la</p><p>2x Numai tu, bădiţo, tu<br>La la la la la la la la<br>2x Altul bade, nu şi nu'.<br>La la la la la la la la</p></section><section><p data-ha-block-name=\"SUNO // PROMPT STYLE\">Replica of original uploaded audio file with raw, unaccompanied acapella vocal-only, and reference tempo carried by synchronized human footsteps; preserve the reference audio’s tempo, rhythm, structure, repeated phrasing and female vocal arrangement</p><figure data-ha-block-name=\"Video\"><video src=\"https://oeyxsqocldlovhsmzcjw.supabase.co/storage/v1/object/public/vha-post-media/3db54039-9208-4ec6-a741-94638e2ace16/600a1839-ffe6-4001-8dbd-3ca1ee497218-purtata-corporatri-tilor---video.mp4\" controls=\"\" preload=\"metadata\" playsinline=\"\"></video><figcaption>Purtata corporatriștilor - video.mp4</figcaption></figure></section><section><figure data-ha-block-name=\"Image\"><img src=\"https://oeyxsqocldlovhsmzcjw.supabase.co/storage/v1/object/public/vha-post-media/3db54039-9208-4ec6-a741-94638e2ace16/33959e46-c667-4d95-b06b-e4971882bc33-purtata-corporatri-tilor---lyrics.png\" alt=\"Purtata corporatriștilor - lyrics.png\" loading=\"lazy\" style=\"max-width: 100%; height: auto;\"><figcaption>Purtata corporatriștilor - lyrics.png</figcaption></figure></section></div>",
-      "public_record_id": "HA-3008"
+      "blocks": [
+        {
+          "id": "block-001",
+          "type": "columns",
+          "html": "<div class=\"ha-columns\"><section><p data-ha-block-name=\"Lyrics\">2x Io-s în deal și jobu-n șesu<br>La la la la la la la la<br>2x Tot aplic da' nu-s alesu'<br>La la la la la la la la</p><p>2x La interviu, gândești că-mi știe<br>La la la la la la la la<br>2x Cum lucrat io pă moșie<br>La la la la la la la la</p><p>2x Mi-i sorocu-nfundatu'<br>La la la la la la la la<br>2x Și am mațu-nnodatu'<br>La la la la la la la la</p><p>2x Badeo, spiculeţ de grâu<br>La la la la la la la la<br>2x Zi-mi și mie ce să zâu<br>La la la la la la la la</p><p>2x Că de-oi semna io cu tine<br>La la la la la la la la<br>2x Nu-mi trebuie' altu-n lume<br>La la la la la la la la</p><p>2x Numai tu, bădiţo, tu<br>La la la la la la la la<br>2x Altul bade, nu şi nu'.<br>La la la la la la la la</p></section><section><p data-ha-block-name=\"SUNO // PROMPT STYLE\">Replica of original uploaded audio file with raw, unaccompanied acapella vocal-only, and reference tempo carried by synchronized human footsteps; preserve the reference audio’s tempo, rhythm, structure, repeated phrasing and female vocal arrangement</p><figure data-ha-block-name=\"Video\"><video src=\"https://oeyxsqocldlovhsmzcjw.supabase.co/storage/v1/object/public/vha-post-media/3db54039-9208-4ec6-a741-94638e2ace16/600a1839-ffe6-4001-8dbd-3ca1ee497218-purtata-corporatri-tilor---video.mp4\" controls=\"\" preload=\"none\" playsinline=\"\"></video><figcaption>Purtata corporatriștilor - video.mp4</figcaption></figure></section><section><p><br></p><div class=\"ha-audio-block\"><figure><audio src=\"media/transmissions/T-0001/46e3f478-0e5a-4c6d-9050-bd33f58d9936-Bing-Bong-I-Am-a-Spoon.mp3\" controls=\"\" preload=\"none\"></audio><figcaption>Bing Bong, I Am a Spoon.mp3</figcaption></figure></div></section></div>"
+        }
+      ],
+      "updated_at": "2026-11-20T22:03:49.087Z"
     },
     {
       "blocks": [],
