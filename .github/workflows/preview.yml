@@ -133,12 +133,12 @@ jobs:
               # Keep old internal links working by mapping them to the new destinations.
               # The community route must be handled before the general Posts route.
               content = re.sub(
-                  r"(?P<prefix>/landing-page-preview)?/posts/community(?=[/?#\"'\\s]|$)",
+                  r"(?P<prefix>/landing-page-preview)?/posts/community(?=[/?#\"'\s]|$)",
                   lambda match: (match.group("prefix") or "") + "/signals",
                   content,
               )
               content = re.sub(
-                  r"(?P<prefix>/landing-page-preview)?/posts(?=[/?#\"'\\s]|$)",
+                  r"(?P<prefix>/landing-page-preview)?/posts(?=[/?#\"'\s]|$)",
                   lambda match: (match.group("prefix") or "") + "/transmissions",
                   content,
               )
