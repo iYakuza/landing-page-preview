@@ -353,7 +353,7 @@ for record in archive.get("records") or []:
         target = media.get("src") or media.get("local_path") or media.get("path")
         if target and str(target).startswith("media/") and target_file(target).is_file():
             media["status"] = "available"
-                    # Retain the original alias in the saved editor structure.
+            media["url"] = local_url(target)
             media["path"] = safe_target(target)
             media["storage"] = "github-public"
 
@@ -372,7 +372,7 @@ for structure in archive.get("editor_structures") or []:
                 key = url_key(media.get("url") or media.get("source_url") or "")
                 target = source_to_target.get(key)
                 if target and target_file(target).is_file():
-                    media["url"] = local_url(target)
+                    # Keep the legacy URL as a manifest key; localMediaUrl uses path.
                     media["path"] = safe_target(target)
                     media["storage"] = "github-public"
 
