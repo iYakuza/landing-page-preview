@@ -37,7 +37,7 @@ EXTERNAL_MEDIA_HOSTS = {
 }
 ALLOWED_HOSTS = OWNED_MEDIA_HOSTS | EXTERNAL_MEDIA_HOSTS
 
-URL_RE = re.compile(r"https?://[^\\s\"'<>]+", re.IGNORECASE)
+URL_RE = re.compile(r"""https?://[^\s"'<>]+""", re.IGNORECASE)
 
 
 def read_json(relative: str) -> dict:
@@ -49,13 +49,13 @@ def read_json(relative: str) -> dict:
 
 def write_json(relative: str, value: dict) -> None:
     (ROOT / relative).write_text(
-        json.dumps(value, ensure_ascii=False, indent=2) + "\\n",
+        json.dumps(value, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
 
 
 def safe_target(raw: str) -> str:
-    value = str(raw or "").replace("\\\\", "/").lstrip("/")
+    value = str(raw or "").replace("\\", "/").lstrip("/")
     parts = PurePosixPath(value).parts
     if not parts or parts[0] != "media" or any(part in ("", ".", "..") for part in parts):
         raise RuntimeError(f"Refusing unsafe media target path: {raw}")
@@ -111,9 +111,9 @@ def sniff_ok(data: bytes, target: str) -> bool:
     if head.startswith((b"<!doctype html", b"<html", b"{\"error\"", b"{\"message\"")):
         return False
     suffix = PurePosixPath(target).suffix.lower()
-    if suffix in (".jpg", ".jpeg") and data[:3] != b"\\xff\\xd8\\xff":
+    if suffix in (".jpg", ".jpeg") and data[:3] != b"\xff\xd8\xff":
         return False
-    if suffix == ".png" and not data.startswith(b"\\x89PNG\\r\\n\\x1a\\n"):
+    if suffix == ".png" and not data.startswith(b"\x89PNG\r\n\x1a\n"):
         return False
     if suffix == ".pdf" and not data.startswith(b"%PDF-"):
         return False
