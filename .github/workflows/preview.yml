@@ -10,6 +10,11 @@ on:
       - 'media/**'
       - 'scripts/**'
       - '.github/workflows/preview.yml'
+  # The website implementation lives in the separate landing-page repository.
+  # Poll its public recovery branch so source changes are picked up without a
+  # cross-repository credential or an additional integration service.
+  schedule:
+    - cron: '17 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -44,6 +49,7 @@ jobs:
           node --check source/human-archive/archive.js
           node --check source/editor-ui/block-editor.js
           node --check source/transmissions/posts.js
+          node --test source/tests/github-store-media.test.js
 
       - name: Assemble isolated preview site and seed its data repository
         shell: bash
