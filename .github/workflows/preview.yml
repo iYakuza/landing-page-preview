@@ -1,6 +1,7 @@
 name: Build isolated GitHub-only CMS preview
 # Rebuild preview after record-scoped Transmission conflict detection was corrected.
-# Also rebuild when GitHub-only CMS logic or editor-control/media compatibility changes in the recovery source.
+# Validate the published media manifest and editor-side reuse of existing block media.
+# Recovery source changes are polled hourly; data/workflow changes and manual dispatches rebuild immediately.
 
 on:
   push:
