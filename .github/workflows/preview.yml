@@ -47,6 +47,7 @@ jobs:
         shell: bash
         run: |
           node --check source/human-archive/archive.js
+          node --check source/cms/github-store.js
           node --check source/editor-ui/block-editor.js
           node --check source/transmissions/posts.js
           node --test source/tests/github-store-media.test.js
