@@ -1,6 +1,6 @@
 name: Build isolated GitHub-only CMS preview
 # Rebuild preview after record-scoped Transmission conflict detection was corrected.
-# Validate published media manifests, private draft audio/video rendering, and atomic Transmission draft creation.
+# Validate private draft image/audio/video Blob handling, archive CSP permissions, and atomic Transmission draft creation.
 # Recovery source changes are polled hourly; data/workflow changes and manual dispatches rebuild immediately.
 
 on:
